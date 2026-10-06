@@ -68,6 +68,12 @@ header{
 .wa-btn svg{width:18px;height:18px;fill:currentColor;flex:none}
 .wa-btn.pulse{animation:pulse 2.8s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%,100%{box-shadow:0 0 0 16px rgba(37,211,102,0)}}
+
+.purple-btn{background:#5C2A5D;color:#fff}
+.purple-btn:hover{box-shadow:0 14px 30px -8px rgba(92,42,93,.5)}
+.purple-btn.pulse{animation:pulse-purple 2.8s infinite}
+@keyframes pulse-purple{0%{box-shadow:0 0 0 0 rgba(92,42,93,.45)}70%,100%{box-shadow:0 0 0 16px rgba(92,42,93,0)}}
+
 .rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(3);opacity:0}}
 
@@ -149,14 +155,19 @@ header{
 }
 .video video{width:100%;height:100%;object-fit:cover}
 
-/* Text above video */
+/* Text above video (full width) */
 .video-heading{
-  text-align:center;color:#fff;
+  text-align:center;
+  color:#fff;
   font-family:var(--serif);
-  font-size:clamp(1.2rem, 3.5vw, 2.4rem);
-  font-weight:600;line-height:1.2;
+  font-size:clamp(1.6rem, 4vw, 2.8rem);
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:0.02em;
   text-shadow:0 4px 18px rgba(0,0,0,1), 0 2px 5px rgba(0,0,0,0.9);
-  padding: 0 10px;
+  padding:0 6% 24px;
+  max-width:1280px;
+  margin:0 auto;
 }
 
 .vctl{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,250,245,.9);cursor:pointer;display:grid;place-items:center;z-index:11;}
@@ -260,10 +271,10 @@ header{
   </symbol>
 </svg>
 
+<h2 class="video-heading rv">We&#8217;re currently refreshing our space to serve you better.</h2>
 <main class="main">
   <!-- VIDEO + CONTENT (LEFT SIDE) -->
   <aside class="side">
-    <h2 class="video-heading">We&#8217;re currently refreshing our space to serve you better.</h2>
     <div class="video rv" id="video">
       <video id="vid" muted loop playsinline preload="metadata" aria-label="Spouzy video"><source src="V1.mp4" type="video/mp4"></video>
       <button class="bigplay" id="bigplay" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></button>
@@ -286,7 +297,7 @@ header{
       <div class="field"><input id="name" placeholder="Enter your Name" autocomplete="name" required><label for="name">Name</label><p class="err">Please enter your name.</p></div>
       <div class="field"><input id="phone" type="tel" inputmode="tel" placeholder="Enter your WhatsApp-enabled mobile number" autocomplete="tel" required><label for="phone">Mobile number</label><p class="err">Enter a valid mobile number (10 to 13 digits).</p></div>
       <div class="field"><input id="solution" placeholder="Enter solution you wish to have" required><label for="solution">Solution you wish to have</label><p class="err">Please enter a solution.</p></div>
-      <button class="wa-btn submit pulse" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>SUBMIT <span class="arrow">&#8594;</span></button>
+      <button class="wa-btn purple-btn submit pulse" type="submit">SUBMIT <span class="arrow">&#8594;</span></button>
      </form>
     </div>
     <div class="success" id="success" role="status" tabindex="-1">
