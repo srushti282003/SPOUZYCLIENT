@@ -73,7 +73,7 @@ header{
 
 /* ── layout ── */
 .main{
-  display:grid;grid-template-columns:1fr 2px 1fr;
+  display:grid;grid-template-columns:1.4fr 2px 0.8fr;
   gap:clamp(24px,4vw,52px);
   padding:8px 6% 60px;
   max-width:1280px;margin:0 auto;width:100%;
@@ -111,33 +111,22 @@ header{
 .progress{position:absolute;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rose),gold);transition:width .5s cubic-bezier(.2,.7,.2,1);z-index:2}
 
 /* form help text */
-.form-help-text{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);letter-spacing:.04em;margin-bottom:18px;line-height:1.3}
+.form-help-text{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--ink);letter-spacing:.04em;margin-bottom:18px;line-height:1.3}
 
 /* ── fields ── */
 .field{position:relative;margin-bottom:20px}
-.field input,.field textarea,.dd-btn{width:100%;background:rgba(255,255,255,.85);border:1px solid rgba(201,130,91,.35);border-radius:12px;padding:26px 16px 9px;transition:border-color .25s,box-shadow .25s,transform .25s}
-.field textarea{resize:vertical;min-height:110px}
+.field input,.field textarea{width:100%;background:rgba(255,255,255,.85);border:1px solid rgba(201,130,91,.35);border-radius:12px;padding:26px 16px 9px;transition:border-color .25s,box-shadow .25s,transform .25s}
 .field label{position:absolute;left:17px;top:19px;color:var(--ink2);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;pointer-events:none;transition:all .2s ease}
 .field input::placeholder,.field textarea::placeholder{color:transparent;transition:color .25s}
 .field input:focus::placeholder,.field textarea:focus::placeholder{color:var(--ph)}
-.field input:focus,.field textarea:focus,.dd-btn:focus,.dd.open .dd-btn{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,130,91,.15);transform:translateY(-1px)}
-.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label,.field.has-val label,.dd.open label{top:8px;font-size:.66rem;color:var(--rose)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--rose);box-shadow:0 0 0 4px rgba(201,130,91,.15);transform:translateY(-1px)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{top:8px;font-size:.66rem;color:var(--rose)}
 .field.ok::after{content:"";position:absolute;right:16px;top:22px;width:9px;height:15px;border:solid var(--rose);border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);animation:tk .35s forwards}
-.dd.ok::after{right:46px}
 @keyframes tk{to{transform:rotate(45deg) scale(1)}}
-.field.invalid input,.field.invalid textarea,.field.invalid .dd-btn{border-color:var(--err);animation:shake .35s}
+.field.invalid input,.field.invalid textarea{border-color:var(--err);animation:shake .35s}
 @keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 .err{display:none;color:var(--err);font-size:.8rem;margin:6px 4px 0}
 .field.invalid .err{display:block}
-
-.dd-btn{cursor:pointer;display:flex;justify-content:space-between;align-items:flex-end;min-height:58px;text-align:left}
-.dd-btn svg{width:16px;height:16px;stroke:var(--ink2);fill:none;stroke-width:2;transition:transform .25s;flex:none;margin-bottom:3px}
-.dd.open .dd-btn svg{transform:rotate(180deg)}
-.dd-list{position:absolute;z-index:10;left:0;right:0;top:calc(100% + 6px);background:rgba(255,250,245,.97);border:1px solid rgba(201,130,91,.3);border-radius:14px;padding:6px;list-style:none;box-shadow:0 22px 44px -14px rgba(59,35,74,.28);visibility:hidden;opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top;transition:all .2s}
-.dd.open .dd-list{visibility:visible;opacity:1;transform:none}
-.dd-list li{padding:11px 14px;border-radius:9px;cursor:pointer;color:var(--ink2);transition:padding .2s,background .2s}
-.dd-list li:hover,.dd-list li.active{background:rgba(232,185,154,.3);color:var(--ink);padding-left:20px}
-.dd-list li[aria-selected=true]{color:var(--ink);font-weight:500}
 
 .submit{width:100%;margin-top:6px;padding:17px 24px}
 .arrow{display:inline-block;transition:transform .25s}
@@ -153,7 +142,7 @@ header{
 .success h3{font-family:var(--serif);font-size:2rem;margin-bottom:20px}
 .link{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;margin-top:18px}
 
-/* ── right side ── */
+/* ── side / video ── */
 .side{display:flex;flex-direction:column;gap:28px}
 .video{
   position:relative;border-radius:22px;overflow:hidden;
@@ -162,9 +151,19 @@ header{
   transition:transform .2s ease-out;transform-style:preserve-3d;
 }
 .video video{width:100%;height:100%;object-fit:cover}
-.vctl{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,250,245,.9);cursor:pointer;display:grid;place-items:center}
+
+/* Text over video */
+.video-text{
+  position:absolute;top:10%;left:0;right:0;text-align:center;
+  color:#fff;font-family:var(--serif);font-size:clamp(1.6rem, 3.8vw, 2.6rem);
+  font-weight:600;padding:0 20px;
+  text-shadow:0 4px 15px rgba(0,0,0,0.8), 0 2px 5px rgba(0,0,0,0.9);
+  z-index:10;pointer-events:none;
+}
+
+.vctl{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,250,245,.9);cursor:pointer;display:grid;place-items:center;z-index:11;}
 .vctl svg{width:16px;height:16px;fill:var(--ink)}
-.bigplay{position:absolute;inset:0;margin:auto;width:78px;height:78px;border-radius:50%;border:0;background:rgba(255,250,245,.95);cursor:pointer;display:none;place-items:center}
+.bigplay{position:absolute;inset:0;margin:auto;width:78px;height:78px;border-radius:50%;border:0;background:rgba(255,250,245,.95);cursor:pointer;display:none;place-items:center;z-index:11;}
 .bigplay::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--rose-l);animation:halo 2s infinite}
 @keyframes halo{to{transform:scale(1.7);opacity:0}}
 .bigplay svg{width:26px;height:26px;fill:var(--rose);margin-left:4px}
@@ -177,22 +176,9 @@ header{
   border-radius:18px;padding:24px 26px;
   border:1px solid rgba(232,185,154,.3);
   box-shadow:0 8px 32px -8px rgba(20,5,0,.3);
+  text-align:center;
 }
-.thanks h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.06em;margin-bottom:8px;color:var(--ink)}
-.thanks p{color:var(--ink2);font-size:.95rem}
-
-.assist{
-  background:rgba(255,250,245,0.88);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-radius:18px;padding:24px 26px;
-  border-left:3px solid var(--rose);
-  border-top:1px solid rgba(232,185,154,.3);
-  border-right:1px solid rgba(232,185,154,.3);
-  border-bottom:1px solid rgba(232,185,154,.3);
-  box-shadow:0 8px 32px -8px rgba(20,5,0,.3);
-}
-.assist h3{font-family:var(--serif);font-size:1.2rem;font-weight:600;letter-spacing:.1em;margin-bottom:8px;color:var(--ink)}
-.assist p{color:var(--ink2);margin-bottom:18px;font-size:.95rem}
+.thanks p{color:var(--ink2);font-size:1.1rem;font-weight:500;margin:0;}
 
 /* scroll reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -213,7 +199,6 @@ header{
 .loader-logo{
   position:relative;z-index:1;
   width:800px;max-width:88vw;height:auto;
-  /* PNG has native transparency — show as-is with a gentle glow */
   filter:drop-shadow(0 0 32px rgba(232,185,154,.5));
   opacity:0;transform:scale(.85);
   animation:ldrIn .8s .3s cubic-bezier(.2,.7,.2,1) forwards;
@@ -233,8 +218,8 @@ header{
   .logo{width:clamp(200px,50vw,320px)}
   .main{grid-template-columns:1fr;padding:14px 16px 50px;gap:20px}
   .divider{display:none}
-  section.card{order:1}
-  .side{order:2;gap:18px}
+  section.card{order:2} /* Form goes below on mobile */
+  .side{order:1;gap:18px} /* Video goes top on mobile */
   .loader-logo{width:80vw;max-width:340px}
 }
 @media(max-width:480px){
@@ -244,7 +229,7 @@ header{
   .card-in{padding:18px 16px}
   .form-help-text{font-size:1.1rem}
   .loader-logo{width:88vw;max-width:240px}
-  .thanks,.assist{padding:18px 16px}
+  .thanks{padding:18px 16px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
@@ -278,24 +263,31 @@ header{
 </svg>
 
 <main class="main">
-  <!-- FORM -->
+  <!-- VIDEO + CONTENT (LEFT SIDE) -->
+  <aside class="side">
+    <div class="video rv" id="video">
+      <div class="video-text">We&#8217;re currently refreshing our space to serve you better.</div>
+      <video id="vid" muted loop playsinline preload="metadata" aria-label="Spouzy video"><source src="V1.mp4" type="video/mp4"></video>
+      <button class="bigplay" id="bigplay" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+      <button class="vctl" id="vctl" aria-label="Pause video"><svg viewBox="0 0 24 24"><path id="vp" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+    </div>
+    <div class="thanks rv">
+      <p>We apologise for the inconvenience.</p>
+    </div>
+  </aside>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- FORM (RIGHT SIDE) -->
   <section class="card rv" id="card" aria-label="Enquiry form">
    <div class="card-in" id="cardIn">
     <div class="progress" id="prog"></div>
     <div id="formView">
-     <p class="form-help-text">Tell us how we can help you.</p>
+     <p class="form-help-text">NEED IMMEDIATE ASSISTANCE?</p>
      <form id="form" novalidate>
-      <div class="field"><input id="name" placeholder="Enter your full name" autocomplete="name" required><label for="name">Your name</label><p class="err">Please enter your full name.</p></div>
+      <div class="field"><input id="name" placeholder="Enter your Name" autocomplete="name" required><label for="name">Name</label><p class="err">Please enter your name.</p></div>
       <div class="field"><input id="phone" type="tel" inputmode="tel" placeholder="Enter your WhatsApp-enabled mobile number" autocomplete="tel" required><label for="phone">Mobile number</label><p class="err">Enter a valid mobile number (10 to 13 digits).</p></div>
-      <div class="field"><input id="email" type="email" placeholder="Enter your email address" autocomplete="email" required><label for="email">Email address</label><p class="err">Enter a valid email address, like name@example.com.</p></div>
-      <div class="field"><input id="loc" placeholder="Enter your city / location" autocomplete="address-level2" required><label for="loc">Location</label><p class="err">Please enter your city or location.</p></div>
-      <div class="field dd" id="dd">
-        <button type="button" class="dd-btn" id="ddBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="ddLabel ddVal"><span id="ddVal"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-        <label id="ddLabel">Solution you wish to have</label>
-        <ul class="dd-list" id="ddList" role="listbox" tabindex="-1" aria-labelledby="ddLabel"></ul>
-        <p class="err">Please select a solution.</p>
-      </div>
-      <div class="field"><textarea id="msg" placeholder="Briefly describe what you are looking for..."></textarea><label for="msg">Tell us about your requirement</label></div>
+      <div class="field"><input id="solution" placeholder="Enter solution you wish to have" required><label for="solution">Solution you wish to have</label><p class="err">Please enter a solution.</p></div>
       <button class="wa-btn submit pulse" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>SUBMIT VIA WHATSAPP <span class="arrow">&#8594;</span></button>
      </form>
     </div>
@@ -308,31 +300,11 @@ header{
    </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- VIDEO + CONTENT -->
-  <aside class="side">
-    <div class="video rv" id="video">
-      <video id="vid" muted loop playsinline preload="metadata" aria-label="Spouzy video"><source src="V1.mp4" type="video/mp4"></video>
-      <button class="bigplay" id="bigplay" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-      <button class="vctl" id="vctl" aria-label="Pause video"><svg viewBox="0 0 24 24"><path id="vp" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
-    </div>
-    <div class="thanks rv">
-      <h3>THANK YOU FOR YOUR VISIT</h3>
-      <p>We&#8217;re currently refreshing our space to serve you better.<br>We sincerely apologise for the inconvenience.<br>Please do visit us again soon.</p>
-    </div>
-    <div class="assist rv">
-      <h3>NEED IMMEDIATE ASSISTANCE?</h3>
-      <p>For urgent enquiries, connect with us directly on WhatsApp.</p>
-      <a class="wa-btn" data-wa href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>CONNECT ON WHATSAPP <span class="arrow">&#8594;</span></a>
-    </div>
-  </aside>
 </main>
 </div>
 
 <script>
 const WA_NUMBER = "918591945055";
-const SOLUTIONS = ["Coaching","Consulting","Counselling","Training","Treatment","Other"];
 const $ = s => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
 const base = `https://wa.me/${WA_NUMBER}`;
@@ -343,34 +315,11 @@ const loader = document.getElementById("loader");
 const hideLoader = () => { if (loader && !loader.classList.contains("hidden")) loader.classList.add("hidden"); };
 setTimeout(hideLoader, 3000);
 
-/* dropdown */
-const dd = $("#dd"), ddBtn = $("#ddBtn"), ddList = $("#ddList"), ddVal = $("#ddVal");
-let sel = "", act = -1;
-SOLUTIONS.forEach((t, i) => {
-  const li = document.createElement("li");
-  li.role = "option"; li.id = "o" + i; li.textContent = t;
-  li.onclick = () => pick(i);
-  ddList.appendChild(li);
-});
-const items = [...ddList.children];
-const setAct = i => { act = i; items.forEach((l, k) => l.classList.toggle("active", k === i)); if (i >= 0) ddBtn.setAttribute("aria-activedescendant","o"+i); };
-const openDd = o => { dd.classList.toggle("open", o); ddBtn.setAttribute("aria-expanded", o); if (o) setAct(Math.max(0, SOLUTIONS.indexOf(sel))); };
-function pick(i) { sel = SOLUTIONS[i]; ddVal.textContent = sel; dd.classList.add("has-val","ok"); dd.classList.remove("invalid"); items.forEach((l, k) => l.setAttribute("aria-selected", k === i)); openDd(false); ddBtn.focus(); progress(); }
-ddBtn.onclick = () => openDd(!dd.classList.contains("open"));
-ddBtn.onkeydown = e => {
-  const o = dd.classList.contains("open");
-  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!o) openDd(true); else setAct((act + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length); }
-  else if ((e.key === "Enter" || e.key === " ") && o) { e.preventDefault(); if (act >= 0) pick(act); }
-  else if (e.key === "Escape" || e.key === "Tab") openDd(false);
-};
-document.addEventListener("click", e => { if (!dd.contains(e.target)) openDd(false); });
-
 /* validation */
 const rules = {
   name:  v => v.trim().length >= 2,
   phone: v => { const d = v.replace(/[\s\-()+]/g,""); return /^\d{10,13}$/.test(d) && /^[+\d][\d\s\-()]*$/.test(v.trim()); },
-  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
-  loc:   v => v.trim().length >= 2
+  solution: v => v.trim().length >= 2
 };
 function mark(k) { const el = $("#"+k), ok = rules[k](el.value); el.parentNode.classList.toggle("ok", ok); return ok; }
 Object.keys(rules).forEach(k => {
@@ -378,18 +327,16 @@ Object.keys(rules).forEach(k => {
   el.addEventListener("blur",  () => el.parentNode.classList.toggle("invalid", !mark(k)));
   el.addEventListener("input", () => { if (mark(k)) el.parentNode.classList.remove("invalid"); progress(); });
 });
-function progress() { const n = Object.keys(rules).filter(k => rules[k]($("#"+k).value)).length + (sel ? 1 : 0); $("#prog").style.width = (n / 5 * 100) + "%"; }
+function progress() { const n = Object.keys(rules).filter(k => rules[k]($("#"+k).value)).length; $("#prog").style.width = (n / 3 * 100) + "%"; }
 
 /* submit */
 $("#form").addEventListener("submit", e => {
   e.preventDefault(); let first = null;
   Object.keys(rules).forEach(k => { const ok = mark(k); $("#"+k).parentNode.classList.toggle("invalid", !ok); if (!ok && !first) first = $("#"+k); });
-  if (!sel) { dd.classList.add("invalid"); if (!first) first = ddBtn; }
   if (first) { first.focus(); return; }
   const msg = [
-    "Hello Spouzy,","I would like to enquire about your services.","",
-    `Name: ${$("#name").value.trim()}`,`Mobile: ${$("#phone").value.trim()}`,`Email: ${$("#email").value.trim()}`,`Location: ${$("#loc").value.trim()}`,"",
-    "Solution I am interested in:",sel,"","Requirement:",$("#msg").value.trim()||"-","","Thank you."
+    "Hello Spouzy,","I need immediate assistance.","",
+    `Name: ${$("#name").value.trim()}`,`Mobile: ${$("#phone").value.trim()}`,`Solution required: ${$("#solution").value.trim()}`,"","Thank you."
   ].join("\n");
   const url = `${base}?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank", "noopener");
@@ -399,10 +346,8 @@ $("#form").addEventListener("submit", e => {
   $("#success").focus();
 });
 $("#again").onclick = () => {
-  $("#form").reset(); sel = ""; ddVal.textContent = "";
-  dd.classList.remove("has-val","ok");
+  $("#form").reset();
   document.querySelectorAll(".ok").forEach(n => n.classList.remove("ok"));
-  items.forEach(l => l.removeAttribute("aria-selected"));
   progress();
   $("#success").classList.remove("show");
   $("#formView").style.display = "";
@@ -443,12 +388,6 @@ if (!reduce) {
     ci.addEventListener("mouseleave", () => ci.style.setProperty("--so",0));
     box.addEventListener("mousemove", e => { const r = box.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5; box.style.transform = `perspective(900px) rotateY(${x*5}deg) rotateX(${-y*5}deg)`; });
     box.addEventListener("mouseleave", () => box.style.transform = "");
-    document.addEventListener("mousemove", e => {
-      const x = e.clientX/innerWidth-.5, y = e.clientY/innerHeight-.5;
-      const br = document.querySelector(".blob.r"), bb = document.querySelector(".blob.b");
-      if(br) br.style.transform = `translate(${x*-40}px,${y*-40}px)`;
-      if(bb) bb.style.transform = `translate(${x*40}px,${y*40}px)`;
-    });
   }
 }
 </script>
