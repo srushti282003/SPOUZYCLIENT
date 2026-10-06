@@ -73,18 +73,15 @@ header{
 
 /* ── layout ── */
 .main{
-  display:grid;grid-template-columns:1.8fr 2px 0.8fr;
-  gap:clamp(24px,4vw,52px);
+  display:grid;grid-template-columns:2.2fr 0.8fr;
+  gap:clamp(16px,4vw,40px);
   padding:8px 6% 60px;
   max-width:1280px;margin:0 auto;width:100%;
   flex:1;
 }
 .divider{
-  background:linear-gradient(var(--rose-l),rgba(201,130,91,.3));
-  width:2px;height:0;align-self:center;border-radius:2px;
-  animation:hh .8s .5s ease-out forwards;
+  display:none;
 }
-@keyframes hh{to{height:85%}}
 
 /* ── glass card ── */
 .card{
@@ -105,7 +102,7 @@ header{
   background:rgba(255,250,245,0.93);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border-radius:22px;
-  padding:clamp(22px,4vw,42px);overflow:hidden;
+  padding:clamp(18px,3vw,30px);overflow:hidden;
 }
 .card-in::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(232,185,154,.25),transparent 60%);opacity:var(--so,0);transition:opacity .3s}
 .progress{position:absolute;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--rose),gold);transition:width .5s cubic-bezier(.2,.7,.2,1);z-index:2}
@@ -156,9 +153,10 @@ header{
 .video-heading{
   text-align:center;color:#fff;
   font-family:var(--serif);
-  font-size:clamp(1.5rem, 4vw, 2.4rem);
+  font-size:clamp(1.2rem, 3.5vw, 2.4rem);
   font-weight:600;line-height:1.2;
-  text-shadow:0 4px 18px rgba(0,0,0,0.8), 0 2px 5px rgba(0,0,0,0.9);
+  text-shadow:0 4px 18px rgba(0,0,0,1), 0 2px 5px rgba(0,0,0,0.9);
+  padding: 0 10px;
 }
 
 .vctl{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,250,245,.9);cursor:pointer;display:grid;place-items:center;z-index:11;}
@@ -174,8 +172,8 @@ header{
   background:rgba(255,255,255,0.12);
   backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-radius:18px;padding:24px 26px;
-  border:1px solid rgba(255,255,255,0.3);
-  box-shadow:0 12px 40px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(255,255,255,0.1);
+  border:0;
+  box-shadow:none;
   text-align:center;
 }
 .thanks p{color:#fff;font-size:1.15rem;font-weight:500;margin:0;letter-spacing:0.04em}
