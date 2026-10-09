@@ -224,8 +224,10 @@ body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !i
       <div class="hire-img-box fancy-box" id="hireBox">
         <div class="fancy-inner">
           <div class="hire-content">
-            <img src="HIRE.jpg" alt="Apply Now – Spouzy Careers">
-            <span style="position:absolute; bottom:24px; left:24px; color:#a2ff00; font-size:clamp(0.7rem, 2vw, 0.95rem); font-weight:800; z-index:10; text-shadow:0 2px 10px #000, 0 0 6px #000; max-width:200px; line-height:1.4;">NO REGISTRATION OR ANY CHARGES TO BE PAID</span>
+            <div style="position:relative; width:100%; display:flex; flex-direction:column;">
+              <img src="HIRE.jpg" alt="Apply Now – Spouzy Careers" style="width:100%; border-radius:18px; object-fit:cover;">
+              <span class="free-badge" style="position:absolute; bottom:16px; left:16px; color:#a2ff00; font-size:clamp(0.7rem, 2vw, 0.95rem); font-weight:800; z-index:10; text-shadow:0 2px 10px #000, 0 0 6px #000; max-width:200px; line-height:1.4;">NO REGISTRATION OR ANY CHARGES TO BE PAID</span>
+            </div>
             <button class="apply-btn" id="applyBtn" aria-label="Apply Now">APPLY NOW</button>
           </div>
         </div>
