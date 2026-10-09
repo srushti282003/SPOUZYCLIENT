@@ -59,8 +59,8 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
   font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:700;
   color:var(--purple);line-height:1.25;margin-bottom:20px;
   opacity:0;transform-origin:center;
-  animation:popText 1s .2s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
 }
+.hero-title.rv.in{animation:popText 1s cubic-bezier(0.175,0.885,0.32,1.275) forwards;}
 .hero-title span{
   display:inline-block;
   background:linear-gradient(90deg,var(--purple),#B06AB1,var(--purple));
@@ -74,8 +74,8 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
   font-size:clamp(.95rem,1.6vw,1.1rem);color:var(--purple);line-height:1.8;
   max-width:960px;margin-bottom:28px;font-weight:600;
   opacity:0;transform-origin:center;
-  animation:popText .9s .5s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
 }
+.hero-desc.rv.in{animation:popText .9s .2s cubic-bezier(0.175,0.885,0.32,1.275) forwards;}
 
 /* ── MAIN GRID ── */
 .main{
@@ -112,9 +112,9 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
 /* ── VIDEO ── */
 .video-wrap{display:flex;flex-direction:column;gap:16px;height:100%}
 .video-box{
-  flex:1;min-height:0;
-  animation:cardPop .8s .6s ease-out both;
+  flex:1;min-height:0;opacity:0;
 }
+.video-wrap.rv.in .video-box{animation:cardPop .8s cubic-bezier(0.175,0.885,0.32,1.275) forwards;}
 .video-box video{width:100%;height:100%;object-fit:cover;display:block}
 .vctl{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,250,245,.9);cursor:pointer;display:grid;place-items:center;z-index:5}
 .vctl svg{width:14px;height:14px;fill:var(--ink)}
@@ -124,14 +124,15 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
 .bigplay svg{width:22px;height:22px;fill:var(--purple);margin-left:3px}
 .fancy-inner.needs-play .bigplay{display:grid}
 
-@keyframes cardPop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes cardPop{from{opacity:0;transform:translateY(40px) scale(.85)}to{opacity:1;transform:none}}
 
 /* ── HIRE SECTION ── */
-.hire-wrap{display:flex;flex-direction:column;gap:18px;animation:cardPop .8s .7s ease-out both;height:100%}
+.hire-wrap{display:flex;flex-direction:column;gap:18px;height:100%}
 .hire-img-box{
-  flex:1;display:flex;
+  flex:1;display:flex;opacity:0;
 }
-.hire-img-box .fancy-inner{background:#1a0a00}
+.hire-wrap.rv.in .hire-img-box{animation:cardPop .8s .15s cubic-bezier(0.175,0.885,0.32,1.275) forwards;}
+.hire-img-box .fancy-inner{background:#1a0a00;padding:40px;}
 .hire-img-box img{width:100%;height:100%;object-fit:contain;display:block}
 .apply-btn{
   position:absolute;bottom:12%;left:50%;transform:translateX(-50%);
@@ -261,8 +262,8 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
 
   <!-- HERO -->
   <section class="hero" aria-label="Welcome">
-    <h1 class="hero-title"><span>Welcome to India's First and Only Platform</span> – to Make Your Life More Enjoyable</h1>
-    <p class="hero-desc">
+    <h1 class="hero-title rv"><span>Welcome to India's First and Only Platform</span> – to Make Your Life More Enjoyable</h1>
+    <p class="hero-desc rv">
       Like every strong Marriage and Relationship needs a periodic check-up and update, we are curating new resources to help you get <strong>Desired Results Guaranteed</strong>. Be it for <strong>Pre-marriage</strong> (find Right Partner to get married), <strong>Post Marriage</strong> (Bring that spark back in existing marriage/Relationship), <strong>Intimacy</strong> (take your Physical, Emotional and Intellectual life to a new level) and even solve complex <strong>Divorce litigation</strong> smoothly.
     </p>
   </section>
@@ -343,7 +344,13 @@ const hideLoader = () => { if(loader && !loader.classList.contains("hidden")) lo
 setTimeout(hideLoader, 3000);
 
 /* Scroll reveal */
-const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add("in"); io.unobserve(x.target); } }), {threshold:.1});
+const io = new IntersectionObserver(es => es.forEach(x => { 
+  if(x.isIntersecting){ 
+    x.target.classList.add("in"); 
+  } else {
+    x.target.classList.remove("in");
+  }
+}), {threshold:.1});
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
 /* Video */
