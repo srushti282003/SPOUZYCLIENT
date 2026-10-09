@@ -17,7 +17,7 @@
   --ease:cubic-bezier(.2,.7,.2,1);--spring:cubic-bezier(.175,.885,.32,1.4);
 }
 *{box-sizing:border-box;margin:0}
-html,body{overflow-x:hidden}
+html,body{overflow-x:hidden;scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;background:var(--ivory);min-height:100vh}
 img,video,svg{max-width:100%;display:block}
 button,input{font:inherit;color:inherit}
@@ -55,8 +55,8 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 @keyframes logoIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 /* ── HERO ── */
-.hero{max-width:1240px;margin:0 auto;width:100%;padding:34px 5% 40px}
-.hero-title{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.8rem);font-weight:700;color:var(--purple-d);line-height:1.15;margin-bottom:24px;position:relative;padding-top:24px;max-width:1000px}
+.hero{max-width:1300px;margin:0 auto;width:100%;padding:34px 5% 40px;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:stretch}
+.hero-title{font-family:var(--serif);font-size:clamp(0.95rem,2.6vw,2.1rem);font-weight:700;color:var(--purple-d);line-height:1.15;margin-bottom:24px;position:relative;padding-top:24px;max-width:100%}
 .hero-title::before{content:"";position:absolute;left:0;top:0;width:70px;height:4px;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--gold));
   transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
 .hero-title.in::before{transform:scaleX(1)}
@@ -72,13 +72,13 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 .hero-desc strong .word{background:linear-gradient(transparent 64%,rgba(230,203,142,.75) 64%)}
 
 /* ── MAIN GRID ── */
-.main{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(18px,3vw,36px);padding:0 5% 60px;max-width:1040px;margin:0 auto;width:100%;align-items:stretch}
+.main{padding:0 5% 60px;max-width:400px;margin:0 auto;width:100%}
 .fancy-box{position:relative;border-radius:22px;padding:5px;background:linear-gradient(45deg,var(--purple-l),var(--gold-l),var(--purple),#FFE5D9,var(--gold));
   background-size:300% 300%;animation:borderGlow 7s ease infinite;box-shadow:0 28px 56px -22px rgba(46,18,48,.55)}
 @keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .fancy-inner{border-radius:18px;overflow:hidden;position:relative;width:100%;height:100%;background:#120005}
 .video-wrap,.hire-wrap{display:flex;flex-direction:column;height:100%}
-.video-box{flex:1;min-height:280px}
+.video-box{flex:1;min-height:220px}
 .video-box video{width:100%;height:100%;object-fit:cover}
 .vctl{position:absolute;right:12px;bottom:12px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,250,245,.94);cursor:pointer;display:grid;place-items:center;z-index:5;transition:transform .2s}
 .vctl:hover{transform:scale(1.12)}
@@ -89,14 +89,14 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 .bigplay svg{width:24px;height:24px;fill:var(--purple);margin-left:3px}
 .fancy-inner.needs-play .bigplay{display:grid}
 .hire-img-box{flex:1;display:flex}
-.hire-img-box .fancy-inner{background:linear-gradient(160deg,var(--purple-d),#1a0a00);display:flex;align-items:center;justify-content:center;padding:16px}
-.hire-content{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
-.hire-content img{width:100%;height:100%;max-height:220px;object-fit:contain;border-radius:12px}
-.apply-btn{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;border:0;border-radius:999px;padding:15px 46px;font-size:.9rem;font-weight:700;letter-spacing:.16em;cursor:pointer;white-space:nowrap;
-  box-shadow:0 10px 28px -8px rgba(92,42,93,.8);transition:transform .25s var(--spring),box-shadow .25s;animation:pulse 2.6s infinite}
+.hire-img-box .fancy-inner{background:linear-gradient(160deg,var(--purple-d),#1a0a00);display:flex;align-items:center;justify-content:center;padding:0}
+.hire-content{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.hire-content img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+.apply-btn{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);overflow:hidden;background:linear-gradient(135deg,var(--purple),var(--purple-l));color:#fff;border:0;border-radius:999px;padding:15px 46px;font-size:.9rem;font-weight:700;letter-spacing:.16em;cursor:pointer;white-space:nowrap;
+  box-shadow:0 10px 28px -8px rgba(92,42,93,.8);transition:transform .25s var(--spring),box-shadow .25s;animation:pulse 2.6s infinite;z-index:10}
 .apply-btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:sheen 3.4s infinite}
 @keyframes sheen{0%{left:-80%}55%,100%{left:140%}}
-.apply-btn:hover{transform:translateY(-3px) scale(1.05)}
+.apply-btn:hover{transform:translateX(-50%) translateY(-3px) scale(1.05)}
 @keyframes pulse{0%,100%{box-shadow:0 10px 28px -8px rgba(92,42,93,.8),0 0 0 0 rgba(201,162,77,.45)}60%{box-shadow:0 10px 28px -8px rgba(92,42,93,.8),0 0 0 14px rgba(201,162,77,0)}}
 
 /* ── BOTTOM ── */
@@ -136,10 +136,13 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 .pop.from-left{transform:translateX(-70px) scale(.85)}
 .pop.from-right{transform:translateX(70px) scale(.85)}
 .pop.from-left.in,.pop.from-right.in{transform:none}
+body:not(.loaded) .pop.in { opacity: 0 !important; transition: none !important; }
+body:not(.loaded) .pop.from-left.in { transform: translateX(-70px) scale(.85) !important; }
+body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !important; }
 
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
-  .main{grid-template-columns:1fr;gap:20px;padding:0 4% 28px;height:auto}
+  .hero{grid-template-columns:1fr;gap:20px;padding:24px 5% 28px}
   .hire-wrap{order:1;height:auto}.video-wrap{order:2;height:auto}
   .hire-img-box{display:block}
   .video-box{flex:none;aspect-ratio:16/10;min-height:0}
@@ -171,19 +174,29 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 
   <header id="hdr">
     <img class="logo" src="LOGO.png" alt="Spouzy">
+    <a href="#hireBox" style="margin-left:auto; display:inline-block; transition:transform 0.2s; animation:logoIn 0.8s ease-out forwards; opacity:0; animation-delay:0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">
+      <img src="S1.png" alt="Apply" style="height:clamp(36px, 6vw, 56px); width:auto; filter:drop-shadow(0 4px 8px rgba(92,42,93,.3));">
+    </a>
   </header>
 
   <!-- HERO -->
   <section class="hero" aria-label="Welcome">
-    <h1 class="hero-title" data-words><span class="grad">Welcome to India's First and Only Platform</span> – to Make Your Life More Enjoyable</h1>
-    <p class="hero-desc" data-words>
-      Like every strong Marriage and Relationship needs a periodic check-up and update, we are curating new resources to help you get <strong>Desired Results Guaranteed</strong>. Be it for <strong>Pre-marriage</strong> (find Right Partner to get married), <strong>Post Marriage</strong> (Bring that spark back in existing marriage/Relationship), <strong>Intimacy</strong> (take your Physical, Emotional and Intellectual life to a new level) and even solve complex <strong>Divorce litigation</strong> smoothly.
-    </p>
-  </section>
-
-  <!-- MAIN GRID: Video (left) | Hire image (right) -->
-  <main class="main">
-    <div class="video-wrap pop from-left">
+    <div class="hero-text">
+      <h1 class="hero-title" data-words><span style="font-size: 1.2em; white-space: nowrap;">Welcome to India's <span class="grad">First & Only</span> Platform—</span><br> <span style="display: inline-block; margin-top: 10px; font-size: 0.85em;">That Makes Your Life More Smoothly and Enjoyably</span></h1>
+      <div class="hero-desc">
+        <p data-words style="margin-bottom: 12px;">At Spouzy, you get total Solutions for:</p>
+        <ul style="list-style: none; padding-left: 0; margin: 0 0 16px 0;">
+          <li data-words style="margin-bottom: 6px;"><strong>(a)</strong> To find the Right Partner</li>
+          <li data-words style="margin-bottom: 6px;"><strong>(b)</strong> Fix a Rocky Relationship</li>
+          <li data-words style="margin-bottom: 6px;"><strong>(c)</strong> Navigate Intimacy blocks</li>
+          <li data-words style="margin-bottom: 6px;"><strong>(d)</strong> Finally settle that exhausting Divorce process</li>
+        </ul>
+        <p data-words>
+          All smoothly. With over 4 decades of expertise, you get assurance of <strong>Desired Results</strong> and <strong>Full Confidentiality</strong>. Just call <strong><a href="tel:+918591945055">8591945055</a></strong> and book a FREE session to feel the Difference. Take a step forward to make your life more smooth and enjoyable.
+        </p>
+      </div>
+    </div>
+    <div class="video-wrap pop from-right">
       <div class="video-box fancy-box" id="videoBox">
         <div class="fancy-inner" id="vidInner">
           <video id="vid" muted loop playsinline preload="metadata" aria-label="Spouzy video">
@@ -194,7 +207,11 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
         </div>
       </div>
     </div>
+  </section>
 
+
+
+  <div class="bottom-content pop hire-container" style="padding-top: 20px; max-width: 840px;">
     <div class="hire-wrap pop from-right" style="--d:.12s">
       <div class="hire-img-box fancy-box" id="hireBox">
         <div class="fancy-inner">
@@ -204,13 +221,6 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
           </div>
         </div>
       </div>
-    </div>
-  </main>
-
-  <!-- BOTTOM CONTENT -->
-  <div class="bottom-content pop">
-    <div class="bottom-card">
-      <p data-words>With our over four decade of expertise, in-house Research, practically tried and tested tactics we have helped thousands of Singles and Couples in getting <strong>Desired Results with Money Back Guarantee</strong>. Seems unbelievable? Let's discuss. <strong>Ask for Free Consultation. Call now: <a href="tel:+918591945055">8591945055</a></strong></p>
     </div>
   </div>
 
@@ -226,7 +236,7 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
       <div class="mfield"><input id="aName" placeholder="Your Full Name" autocomplete="name" required><label for="aName">Full Name</label></div>
       <div class="mfield"><input id="aContact" type="tel" inputmode="tel" placeholder="Your Contact Number" autocomplete="tel" required><label for="aContact">Contact Number</label></div>
       <div class="mfield"><input id="aJob" placeholder="Job position you are applying for" required><label for="aJob">Job Position</label></div>
-      <button class="modal-submit" type="submit">SEND VIA WHATSAPP &#8594;</button>
+      <button class="modal-submit" type="submit">SUBMIT &#8594;</button>
     </form>
   </div>
 </div>
@@ -238,7 +248,7 @@ const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
 
 /* Loader */
 const loader = $("#loader");
-const hideLoader = () => loader.classList.add("hidden");
+const hideLoader = () => { loader.classList.add("hidden"); document.body.classList.add("loaded"); };
 setTimeout(hideLoader, 2800);
 addEventListener("load", () => setTimeout(hideLoader, 1400));
 
