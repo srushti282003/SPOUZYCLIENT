@@ -22,17 +22,8 @@ button,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--purple-l);outline-offset:3px}
 
 /* ── PAGE BG ── */
-.page-bg{
-  position:fixed;inset:0;z-index:0;
-  background: linear-gradient(120deg, #FFF0E5, #FFD6C9, #FFE5D9, #FFF3E0);
-  background-size: 300% 300%;
-  animation: peachGlow 12s ease-in-out infinite;
-}
-@keyframes peachGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+.page-bg{position:fixed;inset:0;z-index:0;background:url('wedding_bg.jpg') center/cover no-repeat}
+.page-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,248,240,.85) 0%,rgba(255,248,240,.6) 40%,rgba(0,0,0,.3) 100%)}
 .wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
 
 /* ── LOGO LOADER ── */
