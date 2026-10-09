@@ -143,7 +143,10 @@ body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !i
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:20px;padding:24px 5% 28px}
-  .hire-wrap{order:1;height:auto}.video-wrap{order:2;height:auto}
+  .hero-text{display:contents}
+  .hero-title{order:1}
+  .video-wrap{order:2;height:auto;margin:10px 0}
+  .hero-desc{order:3}
   .hire-img-box{display:block}
   .video-box{flex:none;aspect-ratio:16/10;min-height:0}
   .pop.from-left,.pop.from-right{transform:translateY(60px) scale(.85)}
