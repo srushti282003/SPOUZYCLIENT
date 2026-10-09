@@ -166,12 +166,25 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
   max-width:1320px;margin:0 auto;width:100%;
 }
 .bottom-card{
-  background:rgba(255,255,255,.14);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  background:rgba(255,250,248,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-radius:18px;padding:28px 32px;
   text-align:center;
+  box-shadow: 0 15px 35px -10px rgba(92,42,93,.15);
+  border: 1px solid rgba(255,255,255,0.7);
 }
-.bottom-card p{color:#fff;font-size:clamp(1rem,1.6vw,1.18rem);font-weight:600;line-height:1.8;letter-spacing:.03em}
-.bottom-card strong{color:#FFD9B8}
+.bottom-card p{
+  color:var(--purple);font-size:clamp(1rem,1.6vw,1.18rem);font-weight:600;line-height:1.8;letter-spacing:.03em;
+  opacity:0;
+}
+.bottom-card strong{color:#9B4D9C}
+
+.rv.in .bottom-card p {
+  animation: popText 0.8s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes popText {
+  0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
 
 /* ── MODAL ── */
 .modal-overlay{
