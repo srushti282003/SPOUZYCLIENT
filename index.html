@@ -22,7 +22,7 @@ button,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--purple-l);outline-offset:3px}
 
 /* ── PAGE BG ── */
-.page-bg{position:fixed;inset:0;z-index:0;background:url('wedding_bg.jpg') center/cover no-repeat}
+.page-bg{position:fixed;inset:0;z-index:0;background:url('bgg.jpg') center/cover no-repeat}
 .page-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,248,240,.85) 0%,rgba(255,248,240,.6) 40%,rgba(0,0,0,.3) 100%)}
 .wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
 
@@ -58,12 +58,8 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
 .hero-title{
   font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:700;
   color:var(--purple);line-height:1.25;margin-bottom:20px;
-  opacity:0;transform-origin:left center;
-  animation:title3D 1.2s .2s cubic-bezier(0.2,0.8,0.2,1) forwards;
-}
-@keyframes title3D{
-  from{opacity:0;transform:rotateY(30deg) translateX(-40px)}
-  to{opacity:1;transform:rotateY(0) translateX(0)}
+  opacity:0;transform-origin:center;
+  animation:popText 1s .2s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
 }
 .hero-title span{
   display:inline-block;
@@ -77,9 +73,9 @@ header{display:flex;align-items:center;padding:12px 5% 8px}
 .hero-desc{
   font-size:clamp(.95rem,1.6vw,1.1rem);color:var(--purple);line-height:1.8;
   max-width:960px;margin-bottom:28px;font-weight:600;
-  opacity:0;animation:slideUpDesc .9s .5s ease-out forwards;
+  opacity:0;transform-origin:center;
+  animation:popText .9s .5s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
 }
-@keyframes slideUpDesc{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
 /* ── MAIN GRID ── */
 .main{
