@@ -55,7 +55,7 @@ header.scrolled .logo{width:clamp(120px,15vw,180px)}
 @keyframes logoIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 
 /* ── HERO ── */
-.hero{max-width:1300px;margin:0 auto;width:100%;padding:34px 5% 40px;display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:stretch}
+.hero{max-width:1300px;margin:0 auto;width:100%;padding:34px 5% 40px;display:grid;grid-template-columns:1.5fr .5fr;gap:40px;align-items:stretch}
 .hero-title{font-family:var(--serif);font-size:clamp(0.95rem,2.6vw,2.1rem);font-weight:700;color:var(--purple-d);line-height:1.15;margin-bottom:24px;position:relative;padding-top:24px;max-width:100%}
 .hero-title::before{content:"";position:absolute;left:0;top:0;width:70px;height:4px;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--gold));
   transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
@@ -144,17 +144,22 @@ body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !i
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:20px;padding:24px 5% 28px}
   .hero-text{display:contents}
-  .hero-title{order:1}
+  .hero-title{order:1; font-size:1.6rem !important;}
+  .hero-title span[style*="nowrap"] { white-space: normal !important; }
   .video-wrap{order:2;height:auto;margin:10px 0}
   .hero-desc{order:3}
   .hire-img-box{display:block}
-  .video-box{flex:none;aspect-ratio:16/10;min-height:0}
+  .video-box{flex:none;aspect-ratio:auto;min-height:0;padding-bottom:10px;}
+  .video-box video { object-fit:contain !important; max-height:400px; }
   .pop.from-left,.pop.from-right{transform:translateY(60px) scale(.85)}
+  .hire-content { display:flex; flex-direction:column; align-items:center; }
+  .apply-btn { position:relative; bottom:auto; left:auto; transform:none; margin: 16px 0; }
 }
 @media(max-width:560px){
   header{padding:8px 4%}
+  .logo{width:220px !important}
   .hero{padding:20px 5% 28px}
-  .apply-btn{padding:13px 34px;font-size:.82rem}
+  .apply-btn{padding:13px 34px;font-size:.9rem}
   .loader-logo{width:88vw}
 }
 @media(prefers-reduced-motion:reduce){
@@ -178,14 +183,14 @@ body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !i
   <header id="hdr">
     <img class="logo" src="LOGO.png" alt="Spouzy">
     <a href="#hireBox" style="margin-left:auto; display:inline-block; transition:transform 0.2s; animation:logoIn 0.8s ease-out forwards; opacity:0; animation-delay:0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">
-      <img src="S1.png" alt="Apply" style="height:clamp(36px, 6vw, 56px); width:auto; filter:drop-shadow(0 4px 8px rgba(92,42,93,.3));">
+      <img src="S1.png" alt="Apply" style="height:clamp(60px, 12vw, 110px); width:auto; filter:drop-shadow(0 4px 8px rgba(92,42,93,.3));">
     </a>
   </header>
 
   <!-- HERO -->
   <section class="hero" aria-label="Welcome">
     <div class="hero-text">
-      <h1 class="hero-title" data-words><span style="font-size: 1.2em; white-space: nowrap;">Welcome to India's <span class="grad">First & Only</span> Platform—</span><br> <span style="display: inline-block; margin-top: 10px; font-size: 0.85em;">That Makes Your Life More Smoothly and Enjoyably</span></h1>
+      <h1 class="hero-title" data-words><span style="font-size: 1.2em; white-space: nowrap;">Welcome to India's <span class="grad">First & Only</span> Platform—</span><br> <span style="display: inline-block; margin-top: 10px; font-size: 1.15em;">That Makes Your Life More Smoothly and Enjoyably</span></h1>
       <div class="hero-desc">
         <p data-words style="margin-bottom: 12px;">At Spouzy, you get total Solutions for:</p>
         <ul style="list-style: none; padding-left: 0; margin: 0 0 16px 0;">
@@ -220,6 +225,7 @@ body:not(.loaded) .pop.from-right.in { transform: translateX(70px) scale(.85) !i
         <div class="fancy-inner">
           <div class="hire-content">
             <img src="HIRE.jpg" alt="Apply Now – Spouzy Careers">
+            <span style="position:absolute; bottom:24px; left:24px; color:#a2ff00; font-size:clamp(0.7rem, 2vw, 0.95rem); font-weight:800; z-index:10; text-shadow:0 2px 10px #000, 0 0 6px #000; max-width:200px; line-height:1.4;">NO REGISTRATION OR ANY CHARGES TO BE PAID</span>
             <button class="apply-btn" id="applyBtn" aria-label="Apply Now">APPLY NOW</button>
           </div>
         </div>
